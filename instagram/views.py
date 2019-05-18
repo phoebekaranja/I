@@ -15,3 +15,11 @@ def welcome(request):
     else:
         form = NewProfileForm()
     return render(request,'welcome.html',{'form':form})
+def today(request):
+    current_user = request.user
+    news = Image.get_all()
+    # profile = Profile.objects.get(user = current_user) 
+    profile = Profile.objects.all()
+    comments= Comment.objects.all()
+    form = NewCommentForm()
+    return render(request,'all-news/index.html',{'news':news, 'profile':profile,'profile':profile,'form':form , 'comments':comments})
