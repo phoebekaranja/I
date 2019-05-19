@@ -28,14 +28,14 @@ def today(request):
     profile = Profile.objects.all()
     comments= Comment.objects.all()
     form = NewCommentForm()
-    return render(request,'all-news/index.html',{'news':news, 'profile':profile,'profile':profile,'form':form , 'comments':comments})
+    return render(request,'all-instagram/index.html',{'news':news, 'profile':profile,'profile':profile,'form':form , 'comments':comments})
 
 def image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
     except ObjectDoesNotExist:
         raise Http404()
-    return render(request,'all-news/image.html',{'image':image})
+    return render(request,'all-instagram/image.html',{'image':image})
 
 @login_required(login_url='/accounts/login/')
 def new_image(request):
@@ -82,11 +82,11 @@ def search_results(request):
         searched_profile = Profile.search_by_username(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-news/search.html',{"message":message,"profiles": searched_profile})
+        return render(request, 'all-instagram/search.html',{"message":message,"profiles": searched_profile})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all-news/search.html',{"message":message})
+        return render(request, 'all-instagram/search.html',{"message":message})
 
 def search_profile(request,profile_id):
     try :
@@ -94,9 +94,9 @@ def search_profile(request,profile_id):
 
     except ObjectDoesNotExist:
         # raise Http404()
-        return render(request, 'all-news/no_profile.html')
+        return render(request, 'all-instagram/no_profile.html')
 
-    return render(request, 'all-news/search_profile.html', {'profile':profile})
+    return render(request, 'all-instagram/search_profile.html', {'profile':profile})
 
 def comment_photo(request):
     current_user = request.user
