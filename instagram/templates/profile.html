@@ -1,0 +1,62 @@
+{% extends 'all-instagram/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+{{block.super}}
+  <link rel="stylesheet" href="../static/css/profile.css">
+
+<div class="container">
+  <div class="row">
+    {% if profile.user %}
+    <div class="col-md-4">
+      <style>
+      img.radius {
+      border-radius: 70%;
+      }
+      </style>
+      <img  src="{{profile.profile_photo.url}}" class="radius" alt="Image" class="img-responsive">
+      <p> Bio: {{profile.bio}}</p>
+    </div>
+
+    <div class="profile-user-settings">
+
+      <h1 class="profile-user-name">{{profile.user}}</h1>
+
+      <button class="btn profile-edit-btn"><a href="/edit-profile">Edit profile</a> </button>
+
+      <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i></button>
+
+    </div>
+    <div class="profile-stats">
+
+      <ul>
+        <li><span class="profile-stat-count"></span> posts</li>
+        <li><span class="profile-stat-count">0</span> followers</li>
+        <li><span class="profile-stat-count">0</span> following</li>
+      </ul>
+
+    </div>
+
+    {% else %}
+    </p>No profile description</p>
+    {% endif %}
+  </div>
+  <br><br>
+
+  <div class="row">
+    <h2 class="text-center"> Uploaded Photo</h2>
+    {% for news_item in image %}
+    <div class="col-md-4">
+      <a href="{% url 'image' instagram_item.id %}"><img src="{{instagram_item.image.url}}" class="img-responsive" alt="Image"></a>
+    </div>
+    {% endfor%}
+
+
+  </div>
+
+</div>
+
+
+{% endblock %}
