@@ -1,0 +1,54 @@
+{% extends 'all-instagram/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block content %}
+{{block.super}}
+  <link rel="stylesheet" href="../static/css/index.css">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="row">
+        {% for instagram_item in instagram %}
+        <div class="col-md-2">
+
+        </div>
+          <div class="col-md-10 well">
+
+              <p><img src="{{news_item.profile.profile_photo.url}}" class="img-responsive" alt="Image" width="50px" height="45px" style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);"></a>
+                 <strong> {{news_item.profile}} </strong></p>
+              <a href="{% url 'image' instagram_item.id %}"><img  src="{{instagram_item.image.url}}" class="img-responsive" alt="Image" width="500px" height="450px"></a>
+              <h4 class="btn btn-lg"><i class="far fa-heart" style="font-size:24px"></i></h4>{{instagram_item.likes}}
+              <a href="{% url 'comment-photo'%}"> <h4 class="btn btn-lg" ><i class="far fa-comment" style="font-size:24px;color:black;"></i> </h4> </a>{{instagram_item.comment}}
+              <hr>
+              <b>Caption: </b>{{instagram_item.image_caption}}
+              {%for comment in comments %}
+              {% if comment.photo == instagram_item %}
+              <p>{{comment.username.username}}: {{comment.comment}}</p>
+              {% endif %}
+              {% endfor %}
+
+          </div>
+
+
+        {% endfor%}
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-4 well" style="max-width:270px;">
+
+      <p>Suggestions For You  <b style="float:right;"> See All</b></p>
+        {% for profile in profiles %}
+          <p><b> {{profile.user}}  </b> <b style="color:#3897f0;float:right;">Follow</b></p>
+        {% endfor%}
+
+
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}
