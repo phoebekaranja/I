@@ -1,4 +1,7 @@
 from django.db import models
+import datetime as dt
+from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 # Create your models here.
 class Profile(models.Model):
@@ -27,6 +30,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.bio
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/', blank = True)
     image_name = models.CharField(max_length = 30)
@@ -56,3 +60,22 @@ class Image(models.Model):
     def get_image(cls, image_id):
         image = cls.objects.get(id=image_id)
         return image
+
+
+class Comment(models.Model):
+    photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
+    username = models.ForeignKey(User,on_delete = models.CASCADE)
+    comment = models.CharField(max_length = 400)
+
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+    verbose_name_plural = "Categories"
+
+    def get_comments_by_images(cls, id):
+        comments = Comment.objects.filter(image_pk = id)
+        return comments
