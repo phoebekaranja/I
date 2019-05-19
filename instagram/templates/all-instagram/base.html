@@ -1,0 +1,30 @@
+<!-- {% load bootstrap3 %} -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <title> Instagram</title>
+    {% block styles %}
+      {% bootstrap_css %}
+          <link rel="stylesheet" href="{% static 'css/baseinstagram.css' %}">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% endblock %}
+  </head>
+  <body>
+    {% include "navbar.html" %}
+    <br><br><br><br><br>
+    {% block content %}
+
+    {% endblock%}
+
+    {% block script %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      {% bootstrap_javascript %}
+    {% endblock%}
+
+  </body>
+</html>
