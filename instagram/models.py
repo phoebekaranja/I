@@ -25,7 +25,7 @@ class Profile(models.Model):
 
     @classmethod
     def search_by_username(cls,search_term):
-        news = cls.objects.filter(user__username=search_term)
+        instagram = cls.objects.filter(user__username=search_term)
         return news
 
     def __str__(self):
@@ -45,7 +45,6 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
-
 
     def update_caption(self,image_caption):
         self.image_caption = image_caption

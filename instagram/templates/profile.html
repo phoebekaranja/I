@@ -47,7 +47,7 @@
 
   <div class="row">
     <h2 class="text-center"> Uploaded Photo</h2>
-    {% for news_item in image %}
+    {% for instagram_item in image %}
     <div class="col-md-4">
       <a href="{% url 'image' instagram_item.id %}"><img src="{{instagram_item.image.url}}" class="img-responsive" alt="Image"></a>
     </div>

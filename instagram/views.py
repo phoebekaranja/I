@@ -15,7 +15,7 @@ def welcome(request):
             profile = form.save(commit = False)
             profile.user = current_user
             profile.save()
-        return redirect('news-Profile')
+        return redirect('instagram-Profile')
     else:
         form = NewProfileForm()
     return render(request,'welcome.html',{'form':form})
@@ -23,12 +23,12 @@ def welcome(request):
 @login_required(login_url='/accounts/login/')
 def today(request):
     current_user = request.user
-    news = Image.get_all()
+    instagram = Image.get_all()
     # profile = Profile.objects.get(user = current_user) 
     profile = Profile.objects.all()
     comments= Comment.objects.all()
     form = NewCommentForm()
-    return render(request,'all-instagram/index.html',{'news':news, 'profile':profile,'profile':profile,'form':form , 'comments':comments})
+    return render(request,'all-instagram/index.html',{'instagram':instagram, 'profile':profile,'profile':profile,'form':form , 'comments':comments})
 
 def image(request,image_id):
     try:
@@ -46,7 +46,7 @@ def new_image(request):
             image = form.save(commit = False)
             image.profile = current_user
             image.save()
-        return redirect('newsToday')
+        return redirect('instagram-Today')
     else:
         form = NewImageForm()
     return render(request,'new_image.html', {'form':form})
@@ -70,7 +70,7 @@ def edit_profile(request):
         form = NewProfileForm(request.POST, request.FILES,instance=user)
         if form.is_valid():
             form.save()
-        return redirect('news-Profile')
+        return redirect('instagram-Profile')
     else:
         form = NewProfileForm()
     return render(request,'edit_profile.html', {'form':form})
