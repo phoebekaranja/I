@@ -22,7 +22,7 @@
           <div class="col-md-1">
 
             <nav class="navbar-right">
-            <a href="{% url 'newsToday' %}"><section class="logo-section"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png"/>
+            <a href="{% url 'instagramToday' %}"><section class="logo-section"><img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png"/>
             <div></div><img class="logoname" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png"/>
             </section></a>
             </nav>
@@ -106,7 +106,7 @@
 
           {% if user.is_authenticated %}
 
-          <a  class="navbar-brand" href="{% url 'news-Profile' %}"><i class="far fa-user" style="font-size:24px;color:black;"></i></a>
+          <a  class="navbar-brand" href="{% url 'instagram-Profile' %}"><i class="far fa-user" style="font-size:24px;color:black;"></i></a>
           <a  class="navbar-brand" href="{% url 'new-image' %}"><i class="fa fa-upload" style="font-size:24px;color:black;"></i></a>
           <a  class="navbar-brand" data-toggle="modal" data-target="#settings" aria-hidden="true" ><i class="fa fa-th"  style="font-size:24px;color:black;"></i></a>
 

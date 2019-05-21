@@ -18,6 +18,9 @@ class Profile(models.Model):
         self.bio = bio
         self.save()
 
+    class Meta:
+        pass
+
     @classmethod
     def update_profile(cls,profile,update):
          updated = cls.objects.filter(Image_name=profile).update(name=update)
@@ -26,7 +29,7 @@ class Profile(models.Model):
     @classmethod
     def search_by_username(cls,search_term):
         instagram = cls.objects.filter(user__username=search_term)
-        return news
+        return instagram
 
     def __str__(self):
         return self.bio

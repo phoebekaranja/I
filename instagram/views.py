@@ -23,12 +23,16 @@ def welcome(request):
 @login_required(login_url='/accounts/login/')
 def today(request):
     current_user = request.user
-    instagram = Image.get_all()
+    try:
+        instagram = Image.objects.all()
+    except expression as identifier:
+        pass
+    
     # profile = Profile.objects.get(user = current_user) 
     profile = Profile.objects.all()
     comments= Comment.objects.all()
     form = NewCommentForm()
-    return render(request,'all-instagram/index.html',{'instagram':instagram, 'profile':profile,'profile':profile,'form':form , 'comments':comments})
+    return render(request,'all-instagram/index.html',{ 'profile':profile,'profile':profile,'form':form , 'comments':comments,"instagram":instagram})
 
 def image(request,image_id):
     try:
@@ -46,7 +50,7 @@ def new_image(request):
             image = form.save(commit = False)
             image.profile = current_user
             image.save()
-        return redirect('instagram-Today')
+        return redirect('instagramToday')
     else:
         form = NewImageForm()
     return render(request,'new_image.html', {'form':form})
@@ -60,8 +64,7 @@ def profile(request):
         profile = Profile.objects.get(user=current_user)
     except ObjectDoesNotExist:
         return redirect('welcome')
-    print(profile.bio)
-    return render(request,'profile.html',{ 'profile':profile,'image':image,'current_user':current_user})
+    return render(request,'profile.html',{  'profile':profile,'image':image,'current_user':current_user})
 
 def edit_profile(request):
     current_user = request.user
@@ -70,7 +73,7 @@ def edit_profile(request):
         form = NewProfileForm(request.POST, request.FILES,instance=user)
         if form.is_valid():
             form.save()
-        return redirect('instagram-Profile')
+        return redirect('edit-profile')
     else:
         form = NewProfileForm()
     return render(request,'edit_profile.html', {'form':form})

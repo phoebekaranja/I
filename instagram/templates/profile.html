@@ -1,15 +1,13 @@
 {% extends 'all-instagram/base.html' %}
-{% load bootstrap3 %}
-{% load static %}
 {% load staticfiles %}
 
 {% block content %}
-{{block.super}}
+
   <link rel="stylesheet" href="../static/css/profile.css">
 
 <div class="container">
   <div class="row">
-    {% if profile.user %}
+    
     <div class="col-md-4">
       <style>
       img.radius {
@@ -39,9 +37,7 @@
 
     </div>
 
-    {% else %}
-    </p>No profile description</p>
-    {% endif %}
+   
   </div>
   <br><br>
 
