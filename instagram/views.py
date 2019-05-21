@@ -119,4 +119,18 @@ def comment_photo(request):
 def like(request):
     ajax = AjaxLikePhoto(request.GET, request.user)
     context = {'ajax_output':ajax_output()}
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewAjaxForm(request.POST, request.FILES)
+        # image = get_object_or_404(Image,pk=2)
+        if form.is_valid():
+            ajax = form.save(commit = False)
+            ajax.username = current_user
+            # comment.photo = photo
+            ajax.save()
+        return redirect('/')
+    else:
+        form = NewAjaxForm()
+    return render(request,'ajax.html', {'form':form})
+
     return render(request, 'ajax.html', context)
