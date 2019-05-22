@@ -10,33 +10,55 @@
 
 ## Description.
 
-This is an Instagram application where user first sign up for him/her to login to the homepage. The user can post image to the application and also he/she can add comment to the image.User can search for other users and update his/her profile 
+
+This is an application where user first sign up for him/her to login to the homepage. The user can post image to the application and also he/she can add comment to the image.User can search for other users and update his/her profile 
+
+
+
+
+# Prerequisites
+
+
+ To be able to run this web application, you will need to have a web browser, preferably Google Chrome.
+ Just open the url link deployed on GitHub and run it.
 
 
 
 
 
 ## Setup/Installation Requirements.
-* Make sure the computer has atom .
-* Make sure your computer in connected to a browser.
-* Python has been used to form this application.
+
+Make sure the computer has atom .
+Make sure your computer in connected to a browser.
+Python has been used to form this application
+To be able to run this web application, you will need to have a web browser, preferably Google Chrome. Just open the url link deployed on GitHub and run it.
 
 
 
 ## Known Bugs.
 there are no know Bugs in this web page.
 
+
+
+
 ## Technologies Used 
 * python
 * HTML
 * Bootstrapp,CSS
 * django
+
+
+
 ## Support and contact details.
-For more information contact 0798164370 or Email me fibilinah@gmail.com
+ If there are any issues on how the code runs, concerns, questions or ideas, kindly reach out to me on my email address; phoebemurish@gmail.com.
+
+
 
 
 ## Link to live website.
-m
+https://m1gram.herokuapp.com/
+
+
 
 
 ### License.
