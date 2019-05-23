@@ -62,9 +62,6 @@ class Image(models.Model):
     def get_image(cls, image_id):
         image = cls.objects.get(id=image_id)
         return image
-    def __str__(self):
-        return self. image_name
-    
 
 
 class Comment(models.Model):

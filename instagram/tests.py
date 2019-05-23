@@ -22,14 +22,7 @@ class ProfileTestClass(TestCase):
         self.new_profile.save_profile()
         self.new_profile.delete_profile()
 
-    # def test_update_bio(self):
-    #     self.new_profile.save_profile()
-    #     self.new_profile = Profile.objects.get(id=50)
-    #     profile = self.new_profile
-    #     profile.update_bio('changed user bio')
-    #     self.updated_profile = Profile.objects.get(id=50)
-    #     self.assertEqual(self.updated_profile.bio,'changed user bio')
-
+    
 
 class ImageTestClass(TestCase):
 
